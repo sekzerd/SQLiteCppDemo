@@ -1,0 +1,19 @@
+cmake_minimum_required(VERSION 3.22)
+set(PROJECT_NAME "SQLite3")
+set(C_STANDARD 11)
+project(${PROJECT_NAME})
+
+if(WIN32)
+message(STATUS "detected windows")
+set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
+set(BUILD_SHARED_LIBS TRUE)
+endif()
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/libs)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/libs)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/libs)
+
+include_directories(".")
+aux_source_directory("." SQLITE_SRCS)
+add_library(${PROJECT_NAME}_static STATIC ${SQLITE_SRCS})
+add_library(${PROJECT_NAME}_shared SHARED ${SQLITE_SRCS})
