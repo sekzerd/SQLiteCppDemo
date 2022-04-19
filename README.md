@@ -4,7 +4,7 @@
 
 ### build sqlite3 library
     cd sqlite3
-    cmake -B build -G && cmake --build build
+    cmake -B build && cmake --build build
 
 ### build demo
-    cmake -B build -G && cmake --build build
+    cmake -B build && cmake --build build
