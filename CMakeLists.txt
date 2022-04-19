@@ -15,4 +15,7 @@ add_subdirectory("sqlite3")
 target_link_libraries(${PROJECT_NAME}_static_bin SQLite3_static)
 target_link_libraries(${PROJECT_NAME}_dynamic_bin SQLite3_shared)
 
+if(WIN32)
+message(STATUS "copy dll library for windows")
 file(COPY "sqlite3/libs/SQLite3_shared.dll" DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+endif()
